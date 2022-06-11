@@ -27,8 +27,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         
         Route::get('accepted/{email}', [APIController::class, 'showInvitations'])->name('accepted');
         Route::get('requested/{email}', [APIController::class, 'requestedInvitation'])->name('requested');    
-        Route::get('delete/{id}', [APIController::class, 'destroy'])->name('delete');
-        Route::get('accept/{id}', [APIController::class, 'acceptInvitation'])->name('accept');
+        Route::delete('delete/{id}', [APIController::class, 'destroy'])->name('delete');
+        Route::put('accept/{id}', [APIController::class, 'acceptInvitation'])->name('accept');
         Route::post('send-data',[APIController::class, 'sendInvitation'])->name('send-data');
         
 });

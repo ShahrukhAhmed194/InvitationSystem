@@ -125,9 +125,17 @@
                 <td class="text-center">{{$info->sender_email}}</td>
                 <td class="text-justify">{{$info->occation}}</td>
                 <td class="text-justify">{{$info->details}}</td>
-                <td class="text-center"> 
-                  <a type="button" class="btn btn-outline-success btn-sm" href="{{route('accept',$info->id)}}">Accept</a>
-                  <a type="button" class="btn btn-outline-danger btn-sm" href="{{route('delete',$info->id)}}">Delete</a>
+                <td class="text-center">
+                  <form action="{{route('accept',$info->id)}}" method="POST">
+                    @csrf                      
+                    @method('PUT')
+                    <button type="submit" class="btn btn-outline-success btn-sm">Accept</button>                    
+                  </form>
+                  <form action="{{route('delete',$info->id)}}" method="POST">
+                    @csrf                      
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>                    
+                  </form> 
                 </td>
               </tr> 
                 @endforeach
